@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b2e08221cd4b614d9bd7d68cd5de892, type: 3}
+  m_Name: New Groundtile
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 21300034, guid: dfb9ebf3f0712b94c937e01137c0eb70, type: 3}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 1822954378498386, guid: fa5ed0ca69c766d46a2b7f4b9dd29099,
+    type: 2}
+  m_Flags: 1
+  m_ColliderType: 1
+  groundSprites:
+  - {fileID: 21300048, guid: dfb9ebf3f0712b94c937e01137c0eb70, type: 3}
+  - {fileID: 21300068, guid: dfb9ebf3f0712b94c937e01137c0eb70, type: 3}
+  - {fileID: 21300026, guid: dfb9ebf3f0712b94c937e01137c0eb70, type: 3}
+  - {fileID: 21300054, guid: dfb9ebf3f0712b94c937e01137c0eb70, type: 3}
+  - {fileID: 21300066, guid: dfb9ebf3f0712b94c937e01137c0eb70, type: 3}
+  - {fileID: 21300022, guid: dfb9ebf3f0712b94c937e01137c0eb70, type: 3}
+  - {fileID: 21300052, guid: dfb9ebf3f0712b94c937e01137c0eb70, type: 3}
+  - {fileID: 21300062, guid: dfb9ebf3f0712b94c937e01137c0eb70, type: 3}
+  - {fileID: 21300024, guid: dfb9ebf3f0712b94c937e01137c0eb70, type: 3}
+  - {fileID: 21300070, guid: dfb9ebf3f0712b94c937e01137c0eb70, type: 3}
+  - {fileID: 21300108, guid: dfb9ebf3f0712b94c937e01137c0eb70, type: 3}
+  - {fileID: 21300104, guid: dfb9ebf3f0712b94c937e01137c0eb70, type: 3}
+  - {fileID: 21300064, guid: dfb9ebf3f0712b94c937e01137c0eb70, type: 3}
+  - {fileID: 21300020, guid: dfb9ebf3f0712b94c937e01137c0eb70, type: 3}
+  - {fileID: 21300044, guid: dfb9ebf3f0712b94c937e01137c0eb70, type: 3}
+  - {fileID: 21300030, guid: dfb9ebf3f0712b94c937e01137c0eb70, type: 3}
+  - {fileID: 21300074, guid: dfb9ebf3f0712b94c937e01137c0eb70, type: 3}
+  - {fileID: 21300094, guid: dfb9ebf3f0712b94c937e01137c0eb70, type: 3}
+  - {fileID: 21300028, guid: dfb9ebf3f0712b94c937e01137c0eb70, type: 3}
+  - {fileID: 21300072, guid: dfb9ebf3f0712b94c937e01137c0eb70, type: 3}
+  - {fileID: 21300092, guid: dfb9ebf3f0712b94c937e01137c0eb70, type: 3}
+  - {fileID: 21300046, guid: dfb9ebf3f0712b94c937e01137c0eb70, type: 3}
+  - {fileID: 21300050, guid: dfb9ebf3f0712b94c937e01137c0eb70, type: 3}
+  - {fileID: 21300100, guid: dfb9ebf3f0712b94c937e01137c0eb70, type: 3}
+  - {fileID: 21300030, guid: dfb9ebf3f0712b94c937e01137c0eb70, type: 3}
+  - {fileID: 21300106, guid: dfb9ebf3f0712b94c937e01137c0eb70, type: 3}
+  - {fileID: 21300018, guid: dfb9ebf3f0712b94c937e01137c0eb70, type: 3}
+  - {fileID: 21300080, guid: dfb9ebf3f0712b94c937e01137c0eb70, type: 3}
+  - {fileID: 21300042, guid: dfb9ebf3f0712b94c937e01137c0eb70, type: 3}
+  - {fileID: 21300086, guid: dfb9ebf3f0712b94c937e01137c0eb70, type: 3}
+  - {fileID: 0}
+  - {fileID: 21300098, guid: dfb9ebf3f0712b94c937e01137c0eb70, type: 3}
+  - {fileID: 21300014, guid: dfb9ebf3f0712b94c937e01137c0eb70, type: 3}
+  - {fileID: 21300088, guid: dfb9ebf3f0712b94c937e01137c0eb70, type: 3}
+  - {fileID: 21300014, guid: dfb9ebf3f0712b94c937e01137c0eb70, type: 3}
+  - {fileID: 21300078, guid: dfb9ebf3f0712b94c937e01137c0eb70, type: 3}
+  - {fileID: 21300038, guid: dfb9ebf3f0712b94c937e01137c0eb70, type: 3}
+  - {fileID: 21300082, guid: dfb9ebf3f0712b94c937e01137c0eb70, type: 3}
+  - {fileID: 21300096, guid: dfb9ebf3f0712b94c937e01137c0eb70, type: 3}
+  - {fileID: 21300090, guid: dfb9ebf3f0712b94c937e01137c0eb70, type: 3}
+  - {fileID: 21300016, guid: dfb9ebf3f0712b94c937e01137c0eb70, type: 3}
+  - {fileID: 21300090, guid: dfb9ebf3f0712b94c937e01137c0eb70, type: 3}
+  - {fileID: 21300016, guid: dfb9ebf3f0712b94c937e01137c0eb70, type: 3}
+  - {fileID: 21300102, guid: dfb9ebf3f0712b94c937e01137c0eb70, type: 3}
+  - {fileID: 21300100, guid: dfb9ebf3f0712b94c937e01137c0eb70, type: 3}
+  - {fileID: 21300102, guid: dfb9ebf3f0712b94c937e01137c0eb70, type: 3}
+  - {fileID: 21300040, guid: dfb9ebf3f0712b94c937e01137c0eb70, type: 3}
+  preview: {fileID: 0}
+  m_defaultColliderTyper: 1
