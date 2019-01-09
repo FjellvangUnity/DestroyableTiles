@@ -8,14 +8,34 @@ public class PlayerControllerV2 : PhysicsObject {
     public float maxSpeed = 7f;
 
     Vector3 defaultScale;
-    private SpriteRenderer spriteRenderer;
     private Animator animator;
-	// Use this for initialization
-	void Awake() {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+    private float lastfired;
+    public float timeToFire = 0.05f;
+    public GameObject bullet;
+    public float bulletSpeed = 20f;
+    public int jumps = 1;
+
+    // Use this for initialization
+    void Awake() {
         defaultScale = transform.localScale;
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
 	}
+    void Fire()
+    {
+        lastfired += Time.deltaTime;
+        if (lastfired <= timeToFire )
+        {
+            return;
+        }
+        CameraShake.shakeDuration = 0.1f;
+
+        var bul = Instantiate(bullet, transform.position, Quaternion.identity);
+        bul.transform.position = new Vector3(transform.position.x, transform.position.y, -2);
+        var rig = bul.GetComponent<Rigidbody2D>();
+        rig.AddForce(new Vector3(transform.localScale.x,0,0).normalized * bulletSpeed, ForceMode2D.Impulse);
+        Destroy(bul, 2f);
+        lastfired = 0;
+    }
 
     protected override void ComputeVelocity()
     {
@@ -23,9 +43,14 @@ public class PlayerControllerV2 : PhysicsObject {
 
         move.x = Input.GetAxis("Horizontal");
 
-        if (Input.GetButtonDown("Jump") && grounded)
+        if (Input.GetButtonDown("Jump") && (grounded || jumps > 0))
         {
+            jumps--;
             velocity.y = jumpTakeOffSpeed;
+        }
+        if (Input.GetKey(KeyCode.E))
+        {
+            Fire();
         }
         else if (Input.GetButtonUp("Jump"))
         {
@@ -46,9 +71,15 @@ public class PlayerControllerV2 : PhysicsObject {
         }
 
         animator.SetFloat("runSpeed", Mathf.Abs(velocity.x) / maxSpeed);
-        bool falling = velocity.y < 0 ? true : false;
-        animator.SetBool("isFalling", falling);
+        animator.SetBool("isFalling", !grounded);
 
         targetVelocity = move * maxSpeed;
+        if (grounded)
+        {
+            //TODO: change if we want to change num of jumps
+            jumps = 1;
+            
+        }
+        Debug.Log(jumps);
     }
 }

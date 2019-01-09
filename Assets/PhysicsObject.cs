@@ -11,7 +11,7 @@ public class PhysicsObject : MonoBehaviour {
     protected Vector2 groundNormal;
     protected Vector2 targetVelocity;
     protected Vector2 velocity;
-    protected const float minMoveDistance = 0.001f; // delta movement limit for collision
+    protected const float minMoveDistance = 0.0001f; // delta movement limit for collision
     protected Rigidbody2D rigidbody;
     protected ContactFilter2D contactFilter;
     protected RaycastHit2D[] hitBuffer = new RaycastHit2D[16];
@@ -96,7 +96,7 @@ public class PhysicsObject : MonoBehaviour {
                 // tag prik prodrukt i cases hvor
                 // spiller rammer loftet
                 float projection = Vector2.Dot(velocity, currentNormal);
-                if (projection < 0)
+                if (projection > 0)
                 {
                     // cancel out shit that would be stopped by collision.
                     velocity = velocity - projection * currentNormal;
@@ -106,7 +106,6 @@ public class PhysicsObject : MonoBehaviour {
                 distance = modifiedDistance < distance ? modifiedDistance : distance;
             }
         }
-
         rigidbody.position += move.normalized * distance;
     }
 
