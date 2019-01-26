@@ -42,6 +42,10 @@ public class PlayerControllerV2 : PhysicsObject {
         var move = Vector2.zero;
 
         move.x = Input.GetAxis("Horizontal");
+        if (grounded)
+        {
+           velocity.y = 0; 
+        }
 
         if (Input.GetButtonDown("Jump") && (grounded || jumps > 0))
         {
@@ -80,6 +84,5 @@ public class PlayerControllerV2 : PhysicsObject {
             jumps = 1;
             
         }
-        Debug.Log(jumps);
     }
 }

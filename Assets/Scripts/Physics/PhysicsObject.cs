@@ -65,7 +65,7 @@ public class PhysicsObject : MonoBehaviour {
     /// <param name="move"></param>
     /// <param name="yMovement">to make slopemovement easier</param>
            
-    void Movement(Vector2 move, bool yMovement) // ymovement for nemmer
+    void Movement(Vector2 move, bool yMovement) 
     {
         float distance = move.magnitude;
 
@@ -106,6 +106,7 @@ public class PhysicsObject : MonoBehaviour {
                 distance = modifiedDistance < distance ? modifiedDistance : distance;
             }
         }
+        if(grounded){ move.y = 0;}
         rigidbody.position += move.normalized * distance;
     }
 
