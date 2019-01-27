@@ -20,6 +20,12 @@ public class BulletScript : MonoBehaviour {
     {
         if (!collision.gameObject.CompareTag("Player"))
         {
+            var health = collision.gameObject.GetComponent<Health>();
+            if (health != null)
+            {
+                
+                health.TakeDamage(10);
+            }
             Instantiate(particles, gameObject.transform.position, Quaternion.identity);
             Destroy(gameObject, 0.1f);
         }

@@ -10,6 +10,8 @@ public class EnemyController : PhysicsObject
     bool WithinRange = false;
     public Transform player;
 
+    public LayerMask jumpLayer;
+
     public float maxSpeed = 7;
     public Animator animator;
     /// <summary>
@@ -24,13 +26,15 @@ public class EnemyController : PhysicsObject
 
 
     public override void FixedUpdate(){
-        var offset = new Vector3(transform.localScale.x, 0, 0);
+        var offset = transform.right/2;
         Debug.DrawRay(transform.position + offset, offset * 2, Color.red);
 
-        var hit = Physics2D.Raycast(this.transform.position + offset, offset * 2, 1);
+        var hit = Physics2D.Raycast(this.transform.position + offset, transform.right, 3, jumpLayer);
+        Debug.DrawRay(this.transform.position+offset,Vector2.up, Color.red);
         if (hit.collider != null)
         {
           //TODO: OPTIMIZE
+          Debug.Log("HIT " + hit.collider.tag);
             if (hit.collider.tag == "Ground")
             {
                 velocity.y = jumpTakeOffSpeed;
@@ -53,13 +57,15 @@ public class EnemyController : PhysicsObject
            velocity.y = 0; 
         }
         move.y = 0;
-        if (move.x > 0)
+        if (move.x > 0 && !facingRight)
         {
-            transform.localScale = new Vector3(defaultScale.x, defaultScale.y, 1);
+          Flip();
+            //transform.localScale = new Vector3(defaultScale.x, defaultScale.y, 1);
         }
-        else if (move.x < 0)
+        else if (move.x < 0 && facingRight)
         {
-            transform.localScale = new Vector3(-defaultScale.x, defaultScale.y, 1);
+          Flip();
+            //transform.localScale = new Vector3(-defaultScale.x, defaultScale.y, 1);
         }
         animator.SetFloat("runSpeed", Mathf.Abs(velocity.x) / maxSpeed);
         animator.SetBool("isFalling", !grounded);
@@ -75,8 +81,8 @@ public class EnemyController : PhysicsObject
         }
 
         targetVelocity = move * maxSpeed;
-        Debug.Log(string.Format("velocity: {0}, rig{1}", velocity, rigidbody.velocity));
 
     }
+
 }
 

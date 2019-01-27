@@ -32,15 +32,18 @@ public class PlayerControllerV2 : PhysicsObject {
         var bul = Instantiate(bullet, transform.position, Quaternion.identity);
         bul.transform.position = new Vector3(transform.position.x, transform.position.y, -2);
         var rig = bul.GetComponent<Rigidbody2D>();
-        rig.AddForce(new Vector3(transform.localScale.x,0,0).normalized * bulletSpeed, ForceMode2D.Impulse);
+        rig.AddForce(transform.right * bulletSpeed, ForceMode2D.Impulse);
         Destroy(bul, 2f);
         lastfired = 0;
     }
 
     protected override void ComputeVelocity()
     {
+        if(animator.GetAnimatorTransitionInfo(0).IsName("PlayerHurt")){
+            Debug.Log(" IS HURT PLAYING");
+            return;
+        }
         var move = Vector2.zero;
-
         move.x = Input.GetAxis("Horizontal");
         if (grounded)
         {
@@ -65,13 +68,13 @@ public class PlayerControllerV2 : PhysicsObject {
             }
         }
 
-        if (move.x > 0)
+        if (move.x > 0 && !facingRight)
         {
-            transform.localScale = new Vector3(defaultScale.x, defaultScale.y, 1);
+            Flip();
         }
-        else if(move.x < 0)
+        else if(move.x < 0 && facingRight)
         {
-            transform.localScale = new Vector3(-defaultScale.x, defaultScale.y, 1);
+            Flip();
         }
 
         animator.SetFloat("runSpeed", Mathf.Abs(velocity.x) / maxSpeed);

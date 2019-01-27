@@ -18,6 +18,7 @@ public class PhysicsObject : MonoBehaviour {
     protected RaycastHit2D[] hitBuffer = new RaycastHit2D[16];
     protected const float shellRadius = 0.01f; //make sure we dont get stuck in another gameObject
     protected List<RaycastHit2D> hitBufferList = new List<RaycastHit2D>(16);
+    protected bool facingRight= true;
 
     private void OnEnable()
     {
@@ -85,11 +86,6 @@ public class PhysicsObject : MonoBehaviour {
             { // brug count variablen???
                 Vector2 currentNormal = hitBufferList[i].normal;
                 // find ud af om player er grounded, og om han rammer fra vinkel.
-                if (currentNormal.x != 0 && currentNormal.y == 0)
-                {
-                    Debug.Log("SET TRUE" + currentNormal.ToString());
-                    hitWall = true;
-                }
                 if (currentNormal.y > minGroundNormalY)
                 {
                     grounded = true;
@@ -117,5 +113,9 @@ public class PhysicsObject : MonoBehaviour {
         rigidbody.position += move.normalized * distance;
     }
 
+    protected void Flip(){
+      facingRight = !facingRight;
+      transform.Rotate(0,180,0);
+    }
     protected virtual void ComputeVelocity() { }
 }
