@@ -7,6 +7,7 @@ public class PhysicsObject : MonoBehaviour {
     public float gravityModifier = 1f;
     public float minGroundNormalY = .65f;
 
+    protected bool hitWall;
     protected bool grounded;
     protected Vector2 groundNormal;
     protected Vector2 targetVelocity;
@@ -32,12 +33,12 @@ public class PhysicsObject : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	public virtual void Update () {
         targetVelocity = Vector2.zero;
         ComputeVelocity();
 	}
 
-    void FixedUpdate()
+    public virtual void FixedUpdate()
     {
         velocity += gravityModifier * Physics2D.gravity * Time.deltaTime;
         velocity.x = targetVelocity.x;
@@ -68,6 +69,7 @@ public class PhysicsObject : MonoBehaviour {
     void Movement(Vector2 move, bool yMovement) 
     {
         float distance = move.magnitude;
+        hitWall = false;
 
         if (distance > minMoveDistance)
         {
@@ -83,6 +85,11 @@ public class PhysicsObject : MonoBehaviour {
             { // brug count variablen???
                 Vector2 currentNormal = hitBufferList[i].normal;
                 // find ud af om player er grounded, og om han rammer fra vinkel.
+                if (currentNormal.x != 0 && currentNormal.y == 0)
+                {
+                    Debug.Log("SET TRUE" + currentNormal.ToString());
+                    hitWall = true;
+                }
                 if (currentNormal.y > minGroundNormalY)
                 {
                     grounded = true;
