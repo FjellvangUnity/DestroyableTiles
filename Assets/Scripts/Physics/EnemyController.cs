@@ -41,7 +41,7 @@ public class EnemyController : PhysicsObject
 
     public override void Update(){
       base.Update();
-
+      animator.SetBool("withinRange", WithinRange);
     }
 
     protected override void ComputeVelocity()
@@ -62,6 +62,7 @@ public class EnemyController : PhysicsObject
             transform.localScale = new Vector3(-defaultScale.x, defaultScale.y, 1);
         }
         animator.SetFloat("runSpeed", Mathf.Abs(velocity.x) / maxSpeed);
+        animator.SetBool("isFalling", !grounded);
         if (move.magnitude < RangeToPlayer)
         {
             WithinRange = true;

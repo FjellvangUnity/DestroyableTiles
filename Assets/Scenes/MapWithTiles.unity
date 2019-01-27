@@ -321,8 +321,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gravityModifier: 1.5
   minGroundNormalY: 0.65
+  RangeToPlayer: 2
+  jumpTakeOffSpeed: 15
   player: {fileID: 0}
-  maxSpeed: 7
+  maxSpeed: 3
+  animator: {fileID: 0}
 --- !u!50 &1022322705
 Rigidbody2D:
   serializedVersion: 4
@@ -3624,7 +3627,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: ad19cb09c210d5740ab50d0a9578baf7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
