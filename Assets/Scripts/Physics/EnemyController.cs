@@ -8,7 +8,7 @@ public class EnemyController : PhysicsObject
     public float RangeToPlayer = 2;
     public float jumpTakeOffSpeed = 7f;
     bool WithinRange = false;
-    public Transform player;
+    public GameObject player;
 
     public LayerMask jumpLayer;
 
@@ -20,7 +20,7 @@ public class EnemyController : PhysicsObject
     void Awake()
     {
         defaultScale = transform.localScale;
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        player = GameObject.FindGameObjectWithTag("Player");
         animator = GetComponentInChildren<Animator>();
     }
 
@@ -50,7 +50,11 @@ public class EnemyController : PhysicsObject
 
     protected override void ComputeVelocity()
     {
-        var move = (player.position - this.transform.position);
+        if (player == null)
+        {
+            return;
+        }
+        var move = (player.transform.position - this.transform.position);
 
         if (grounded)
         {

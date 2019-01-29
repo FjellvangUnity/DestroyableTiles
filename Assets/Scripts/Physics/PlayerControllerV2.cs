@@ -9,34 +9,15 @@ public class PlayerControllerV2 : PhysicsObject {
 
     Vector3 defaultScale;
     private Animator animator;
-    private float lastfired;
-    public float timeToFire = 0.05f;
-    public GameObject bullet;
-    public float bulletSpeed = 20f;
     public int jumps = 1;
+    FireScript fireScript;
 
     // Use this for initialization
     void Awake() {
         defaultScale = transform.localScale;
         animator = GetComponentInChildren<Animator>();
+        fireScript = GetComponent<FireScript>();
 	}
-    void Fire()
-    {
-        lastfired += Time.deltaTime;
-        if (lastfired <= timeToFire )
-        {
-            return;
-        }
-        CameraShake.shakeDuration = 0.1f;
-
-        var bul = Instantiate(bullet, transform.position, Quaternion.identity);
-        bul.transform.position = new Vector3(transform.position.x, transform.position.y, -2);
-        var rig = bul.GetComponent<Rigidbody2D>();
-        rig.AddForce(transform.right * bulletSpeed, ForceMode2D.Impulse);
-        Destroy(bul, 2f);
-        lastfired = 0;
-    }
-
     protected override void ComputeVelocity()
     {
         if(animator.GetAnimatorTransitionInfo(0).IsName("PlayerHurt")){
@@ -57,7 +38,7 @@ public class PlayerControllerV2 : PhysicsObject {
         }
         if (Input.GetKey(KeyCode.E))
         {
-            Fire();
+            fireScript.Fire();
         }
         else if (Input.GetButtonUp("Jump"))
         {

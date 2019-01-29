@@ -16,6 +16,11 @@ public class CameraFollow : MonoBehaviour {
         
 	// Update is called once per frame
 	void Update () {
+        //TODO: verify if this branch is needed
+        if (toFollow == null)
+        {
+            return;
+        }
         thisPos = gameObject.transform.position;
         thatPos = toFollow.transform.position;
         thatPos = new Vector3(thatPos.x, thatPos.y, thisPos.z); // Fix z

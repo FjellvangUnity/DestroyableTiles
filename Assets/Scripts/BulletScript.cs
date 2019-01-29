@@ -6,9 +6,12 @@ public class BulletScript : MonoBehaviour {
 
 
     public GameObject particles;
+    public float bulletSpeed = 20f;
+    public Rigidbody2D rb;
 
 	// Use this for initialization
 	void Start () {
+        rb.velocity = transform.right * bulletSpeed;
 	}
 	
 	// Update is called once per frame

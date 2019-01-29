@@ -14,7 +14,6 @@ public class AttackScript : MonoBehaviour {
 
 	public void Attack(){
 		var hit = Physics2D.Raycast(FirePoint.position, transform.right, 2);
-		Debug.Log(string.Format("Right: {0}, local{1}",Vector2.right, transform.right));
 		if (hit.collider != null)
 		{
 			

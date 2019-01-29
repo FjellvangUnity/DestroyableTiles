@@ -21,7 +21,6 @@ public class Health : MonoBehaviour {
             Debug.Log("OUCH");
             health -= 50;
             d += 0.5f;
-            GetComponent<Renderer>().material.color = Color.Lerp(Color.red, Color.black, d);
             if (health < 0)
             {
                 Destroy(gameObject);
